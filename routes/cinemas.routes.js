@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Cinema = require("../models/Cinema");
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res) => { 
   try {
     const cinemas = await Cinema.find().populate("movies");
     return res.status(200).json(cinemas);
