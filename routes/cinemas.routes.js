@@ -29,9 +29,9 @@ router.post("/create", async (req, res) => {
 router.put("/:id/add-movies", async (req, res) => {
   try {
     const cinemaId = req.params.id;
-    const moviesIds = req.body.moviesIds;
+    const movieIds = req.body.movieIds;
     const updatedCinema = await Cinema.findByIdAndUpdate(cinemaId, {
-      $push: { movies: { $each: moviesIds } },
+      $push: { movies: { $each: movieIds } },
     });
     return res.status(200).json(updatedCinema);
   } catch (error) {
