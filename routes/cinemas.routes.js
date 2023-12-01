@@ -1,3 +1,5 @@
+//CONTIENE EL CRUD COMPLETO PARA MOVIES II.
+
 const express = require("express");
 const router = express.Router();
 const Cinema = require("../models/Cinema");

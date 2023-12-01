@@ -1,3 +1,5 @@
+//CONTIENE LOS METODOS GET DEL MOVIES I Y CRUD COMPLETO PARA MOVIES II
+
 const express = require('express')
 const server = express();
 const router = express.Router();
@@ -62,15 +64,44 @@ router.get("/", async (req, res) => {
       }
   });
 
-  router.post('/', async(req,res)=>{
-    try{
-      console.log(req.body)
-      res.send('exito')
+
+//HAGO EL METODO POST DEL SEÑOR DE LOS ANILLOS
+  router.post('/create', async (req, res) => {
+    try {
+        const newMovie = new Movie({
+            title: req.body.title,
+            director: req.body.director,
+            year: req.body.year,
+            genre: req.body.genre
+        });
+
+        const createdMovie = await newMovie.save();
+        return res.status(201).json(createdMovie);
+    } catch (error) {
+      return res.status(500).json(error);
     }
-    catch(err){
-      return res.status(500).json(err);
-    }
-  })
- 
+});
+router.delete('/:id', async (req, res) => {
+  try {
+      const {id} = req.params;
+      const movieDeleted = await Movie.findByIdAndDelete(id);
+      return res.status(200).json(movieDeleted);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+//HAGO METODO PUT PARA EDITAR EL SEÑOR DE LOS ANILLOS A => LORD OF THE RINGS
+router.put('/edit/:id', async (req, res, next) => {
+  try {
+      const { id } = req.params 
+      const movieModify = new Movie(req.body) 
+      movieModify._id = id 
+      const movieUpdated = await Movie.findByIdAndUpdate(id , movieModify)
+      return res.status(200).json(movieUpdated);
+  } catch (error) {
+      return next(error)
+  }
+});
+
 
   module.exports = router
