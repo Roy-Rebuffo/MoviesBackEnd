@@ -69,11 +69,13 @@ router.get("/", async (req, res) => {
 //HAGO EL METODO POST DEL SEÑOR DE LOS ANILLOS
   router.post('/create', upload.single('picture'), async (req, res) => {
     try {
+        const moviePicture = req.file ? req.file.filename : null
         const newMovie = new Movie({
             title: req.body.title,
             director: req.body.director,
             year: req.body.year,
-            genre: req.body.genre
+            genre: req.body.genre,
+            picture: moviePicture
         });
 
         const createdMovie = await newMovie.save();
