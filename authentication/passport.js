@@ -72,11 +72,12 @@ passport.use(
   )
 );
 
-// AÑADO ESTAS DOS LINEAS PARA ARREGLAR ESTE ERROR QUE ME SALIA EN EL PASSPORT: "Failed to serialize user into session" CON ESTO SI QUE ME ARREGLA LOS ERRORES Y ME DEVUELVE LA INFO QUE NECESITO
+// AÑADO ESTAS DOS LINEAS PARA ARREGLAR ESTE ERROR QUE ME SALIA EN EL PASSPORT: "Failed to serialize user into session" CON ESTO. GUARDA EN LA SESION EL ID DEL USUARIO
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
 
+//Y CON ESTE BUSCA EL USUARIO CON SU ID EN LA BBDD Y LO POPULA SI EXISTE
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
