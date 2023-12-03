@@ -105,7 +105,7 @@
     },
     {
         "metodo": "POST",
-        "ruta": "/user/login",
+        "ruta": "/user/logout",
         "descripcion": "TE DEVUELVE EL UN MENSAJE QUE DICE: HASTA PRONTO!",
         "descripcion_en_caso_de_error": "El usuario no existe"
     }
