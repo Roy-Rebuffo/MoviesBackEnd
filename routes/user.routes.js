@@ -37,6 +37,23 @@ router.post('/login', (req, res, next)=>{
     })
   }
   passport.authenticate('login', done)(req)
-})
+});
+
+router.post('/logout', (req, res, next) => {
+  if (req.user) {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      req.session.destroy(() => {
+        res.clearCookie('connect.sid');
+        return res.status(200).json('Hasta pronto!!');
+      });
+    });
+  } else {
+    return res.sendStatus(304);
+  }
+});
+
 
 module.exports = router;
