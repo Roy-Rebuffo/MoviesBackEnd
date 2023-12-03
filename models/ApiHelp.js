@@ -82,3 +82,32 @@
     }
   ]
   
+  //RUTAS PARA LOS REGISTER, LOG-IN, LOG-OUT
+  [
+    {
+        "metodo": "POST",
+        "ruta": "/user/register",
+        "descripcion": "TE DEVUELVE EL JSON DE LA CUENTA CREADA",
+        "descripcion_en_caso_de_error": "El usuario ya existe",
+        "required": {
+            email:"",
+            password:""
+        }
+    },
+    {
+        "metodo": "POST",
+        "ruta": "/user/login",
+        "descripcion": "TE DEVUELVE EL UN JSON CON LA CUENTA QUE HAS USADO PARA ACCEDER",
+        "descripcion_en_caso_de_error": "El usuario no existe",
+        "required": {
+            email:"",
+            password:""
+        }
+    },
+    {
+        "metodo": "POST",
+        "ruta": "/user/login",
+        "descripcion": "TE DEVUELVE EL UN MENSAJE QUE DICE: HASTA PRONTO!",
+        "descripcion_en_caso_de_error": "El usuario no existe"
+    }
+  ]
