@@ -3,8 +3,9 @@
 const express = require("express");
 const router = express.Router();
 const Cinema = require("../models/Cinema");
+const {isAuthenticated} = require('../middleware/auth.middleware')
 
-router.get("/", async (req, res) => { 
+router.get("/",async (req, res) => { 
   try {
     const cinemas = await Cinema.find().populate("movies");
     return res.status(200).json(cinemas);
@@ -13,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create",isAuthenticated , async (req, res) => {
   try {
     const newCinema = new Cinema({
       name: req.body.name,
