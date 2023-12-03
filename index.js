@@ -9,6 +9,7 @@ const moviesRoutes = require('./routes/movies.routes');
 const cinemasRoutes = require('./routes/cinemas.routes');
 const userRoutes = require('./routes/user.routes.js');
 const passport = require('passport');
+const MONGODB_URL = process.env.MONGODB_URL;
 
 
 require('./authentication/passport.js');
@@ -25,7 +26,10 @@ server.use(
     cookie: {
       maxAge: 3600000 // Milisegundos de duración de nuestra cookie, en este caso será una hora.
     },
+    store: MongoStore.create({
+      mongoUrl: MONGODB_URL,
   })
+})
 );
 server.use(passport.initialize());
 server.use(passport.session());
