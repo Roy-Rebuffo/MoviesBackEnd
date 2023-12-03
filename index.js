@@ -21,7 +21,7 @@ const MongoStore = require('connect-mongo');
 
 server.use(
   session({
-    secret: 'upgradehub_node', // ¡Este secreto tendremos que cambiarlo en producción!
+    secret: process.env.SESSION_SECRET, // ¡Este secreto tendremos que cambiarlo en producción!
     resave: false, // Solo guardará la sesión si hay cambios en ella.
     saveUninitialized: false, // Lo usaremos como false debido a que gestionamos nuestra sesión con Passport
     cookie: {
@@ -36,7 +36,7 @@ server.use(passport.initialize());
 server.use(passport.session());
 server.use(express.json());
 
-server.use('/movies', isAuthenticated, moviesRoutes);
+server.use('/movies',  moviesRoutes);
 server.use('/cinemas', isAuthenticated, cinemasRoutes);
 server.use('/user', userRoutes);
 
