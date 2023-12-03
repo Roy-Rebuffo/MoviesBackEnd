@@ -5,6 +5,7 @@ const server = express();
 const PORT = 3000;
 const router = express.Router();
 const session = require('express-session');
+const {isAuthenticated} = require('./middleware/auth.middleware')
 const moviesRoutes = require('./routes/movies.routes');
 const cinemasRoutes = require('./routes/cinemas.routes');
 const userRoutes = require('./routes/user.routes.js');
@@ -35,8 +36,8 @@ server.use(passport.initialize());
 server.use(passport.session());
 server.use(express.json());
 
-server.use('/movies', moviesRoutes);
-server.use('/cinemas', cinemasRoutes);
+server.use('/movies', isAuthenticated, moviesRoutes);
+server.use('/cinemas', isAuthenticated, cinemasRoutes);
 server.use('/user', userRoutes);
 
 
