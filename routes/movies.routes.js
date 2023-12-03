@@ -4,6 +4,7 @@ const express = require('express')
 const server = express();
 const router = express.Router();
 const Movie = require('../models/Movie');
+const {upload} = require('../middleware/file.middleware')
 
 
 router.get("/", async (req, res) => {
@@ -66,7 +67,7 @@ router.get("/", async (req, res) => {
 
 
 //HAGO EL METODO POST DEL SEÑOR DE LOS ANILLOS
-  router.post('/create', async (req, res) => {
+  router.post('/create', upload.single('picture'), async (req, res) => {
     try {
         const newMovie = new Movie({
             title: req.body.title,
