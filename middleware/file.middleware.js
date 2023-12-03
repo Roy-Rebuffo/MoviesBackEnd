@@ -1,5 +1,5 @@
 //probando si este es el error
-/*
+
 const multer = require('multer');
 const path = require('path');
 const VALID_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg'];
@@ -25,4 +25,4 @@ const upload = multer({
   fileFilter,
 });
 
-module.exports = { upload };*/
+module.exports = { upload };
