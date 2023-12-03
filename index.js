@@ -36,7 +36,7 @@ server.use(passport.initialize());
 server.use(passport.session());
 server.use(express.json());
 
-server.use('/movies',  moviesRoutes);
+server.use('/movies', isAuthenticated, moviesRoutes);
 server.use('/cinemas', isAuthenticated, cinemasRoutes);
 server.use('/user', userRoutes);
 
