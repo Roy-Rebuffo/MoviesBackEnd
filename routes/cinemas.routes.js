@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   }
 });
 
-router.post("/create",isAuthenticated , async (req, res) => {
+router.post("/create", isAuthenticated, async (req, res) => {
   try {
     const newCinema = new Cinema({
       name: req.body.name,
