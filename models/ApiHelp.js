@@ -1,8 +1,7 @@
 //EN ESTA SECCION DE API TE GUIO CON MIS METODOS PARA QUE PUEDAS CORREGIR MAS RAPIDO MI EJERCICIO
 
-//ESTOS SON LOS METODOS QUE HE USADO PARA LAS RUTAS DE CINEMA
+//ESTOS SON LOS METODOS Y RUTAS QUE HE USADO PARA CINEMA
 
-// Métodos para las rutas de Cinema
 [
     {
       "metodo": "GET",
@@ -30,7 +29,7 @@
     }
   ]
   
-  // Métodos para las rutas de Movies
+  // ESTOS SON LOS METODOS Y RUTAS QUE HE USADO PARA MOVIES
   [
     {
       "metodo": "GET",
