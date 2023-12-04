@@ -14,14 +14,13 @@ const MONGODB_URL = process.env.MONGODB_URL;
 
 
 require('./authentication/passport.js');
-
-
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 
+
 server.use(
   session({
-    secret: process.env.SESSION_SECRET, // ¡Este secreto tendremos que cambiarlo en producción!
+    secret: process.env.SESSION_SECRET, 
     resave: false, // Solo guardará la sesión si hay cambios en ella.
     saveUninitialized: false, // Lo usaremos como false debido a que gestionamos nuestra sesión con Passport
     cookie: {
