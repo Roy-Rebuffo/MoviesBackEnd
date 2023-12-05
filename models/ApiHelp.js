@@ -13,7 +13,13 @@
       "metodo": "POST",
       "ruta": "/cinemas/create",
       "descripcion": "TE DEVUELVE EL JSON CON TU POST DE CINEMAS",
-      "descripcion_en_caso_de_error": "Error del servidor"
+      "descripcion_en_caso_de_error": "Error del servidor",
+      "required": {
+        title:"",
+        director:"",
+        year: "",
+        genre:"",
+    }
     },
     {
       "metodo": "DELETE",
@@ -108,5 +114,23 @@
         "ruta": "/user/logout",
         "descripcion": "TE DEVUELVE EL UN MENSAJE QUE DICE: HASTA PRONTO!",
         "descripcion_en_caso_de_error": "El usuario no existe"
+    }
+  ]
+
+
+  //RUTA PARA INSERTAR IMAGENES EN MOVIES
+  [
+    {
+        "metodo": "POST",
+        "ruta": "/movies/create",
+        "descripcion": "TE DEVUELVE EL JSON DEL ARRAY CREADO",
+        "descripcion_en_caso_de_error": "error en el servidor",
+        "required": {
+          title:"",
+          director:"",
+          year: "",
+          genre:"",
+          picture:""
+      }
     }
   ]
