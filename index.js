@@ -2,7 +2,7 @@
 const express = require("express");
 require("./utils/db.js");
 const server = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const router = express.Router();
 const session = require('express-session');
 const {isAuthenticated} = require('./middleware/auth.middleware')

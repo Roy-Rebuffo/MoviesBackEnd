@@ -1,10 +1,12 @@
 //CONTIENE LOS METODOS GET DEL MOVIES I Y CRUD COMPLETO PARA MOVIES II
 
-const express = require('express')
+const express = require('express');
 const server = express();
 const router = express.Router();
 const Movie = require('../models/Movie');
-const {upload} = require('../middleware/file.middleware')
+const {upload} = require('../middleware/file.middleware');
+const {uploadToCloudinary} = require('../middleware/file.middleware');
+const fileMiddlewares = require('../middleware/file.middleware');
 
 
 router.get("/", async (req, res) => {
@@ -67,9 +69,9 @@ router.get("/", async (req, res) => {
 
 
 //HAGO EL METODO POST DEL SEÑOR DE LOS ANILLOS
-  router.post('/create', upload.single('picture'), async (req, res) => {
+  router.post('/create', [upload.single('picture')], uploadToCloudinary, async (req, res) => {
     try {
-       const moviePicture = req.file ? req.file.filename : null
+        const moviePicture = req.file ? req.file.filename : null
         const newMovie = new Movie({
             title: req.body.title,
             director: req.body.director,
@@ -79,7 +81,7 @@ router.get("/", async (req, res) => {
         });
 
         const createdMovie = await newMovie.save();
-        return res.status(201).json(createdMovie);
+        return res.status(200 ).json(createdMovie);
     } catch (error) {
       return res.status(500).json("Error del servidor");
     }
